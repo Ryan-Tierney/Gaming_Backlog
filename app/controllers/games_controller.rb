@@ -40,4 +40,39 @@ class GamesController < ApplicationController
         end 
     end 
 
+    get '/games/:id/edit' do 
+        @game = Game.find_by_id(params[:id])
+        if @game && @game.user == current_user 
+            erb :'/games/edit' 
+        else 
+            flash[:error] = "#{game.title} is not part of you're backlog"
+            redirect to '/games'
+        end 
+    end 
+
+    patch '/games/:id' do 
+        @game = Game.find_by_id(params[:id])
+        @game && @game.user == current_user 
+        if params[:title] == "" || params[:developer] == ""
+          flash[:error] = "Please fill all fields"
+          redirect to '/games'
+        else
+          @game.update(title: params[:title], developer: params[:developer]) 
+          @game.save
+          flash[:success] = "#{@game.title} was successfully updated"
+          redirect to '/games'
+        end
+      end
+
+    delete '/games/:id/delete' do 
+        @game = Game.find_by_id(params[:id])
+        if @game && @game.user == current_user
+            @game.delete
+            flash[:success] = "#{@game.title} was deleted successfully"
+            redirect to '/games'
+        else
+            flash[:error] = "This game does not belong to you"
+        end 
+    end 
+
 end 
