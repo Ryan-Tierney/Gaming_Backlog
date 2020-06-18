@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Video Game Backlog</title>
+</head>
+ <body>
+  <nav>
+    <div>
+          <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/register">Register</a></li>
+          <li><a href="/login">Log In</a></li>
+          <li><a href="/logout">Log Out</a></li>
+          <li><a href="/games/new">Add A Game</a></li>
+          <li><a href="/games">Library</a></li>
+        </ul>
+    </div>
+  </nav>
+    <div>
+      <h1>Video Game Backlog</h1><br />
+        <% if logged_in? %>
+        <h2>Welcome, <%=current_user.username %>!</h2>
+      <% end %>
+    </div>
+    <center>
+      <div>
+        <% if flash[:error] != "" %>
+          <p> <%= flash[:error] %> </p>
+        <% end %>
+      </div>
+      <div>
+        <% if flash[:success] != "" %>
+          <p> <%= flash[:success] %> </p>
+        <% end %>
+      </div>
+    </center>
+  <%= yield %>
+ </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Video Game Backlog</title>
+</head>
+  <body>
+    <nav>>
+        <% if logged_in? %>
+            <a href="/games/new" role="button">Add A Game</a>&emsp;&emsp;
+            <a href="/logout" role="button" >Log Out</a>
+        <% else %>   
+            <h1><b>Welcome to the Video Games Library!</b></h1>
+            <h2>Please register or log in</h2>
+            <a href="/register" role="button" >Register</a>&emsp;&emsp;
+            <a href="/login" role="button" >Log In</a>
+        <%end %>
+    </nav> 
+    <br />
+  </body>
+</html>
