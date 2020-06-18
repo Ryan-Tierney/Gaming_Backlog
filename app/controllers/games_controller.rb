@@ -4,7 +4,7 @@ class GamesController < ApplicationController
         if logged_in? 
             @user = current_user 
             session[:user_id] = @user.id 
-            @games = Game.all 
+            @games = Game.all
             erb :'games/games' 
         else 
             redirect to '/login'
@@ -30,5 +30,14 @@ class GamesController < ApplicationController
             redirect to "/games/#{@game.id}"
         end 
     end
+
+    get '/games/:id' do 
+        if logged_in? 
+            @game = Game.find_by_id(params[:id])
+            erb  :'games/show'
+        else 
+            redirect to '/login' 
+        end 
+    end 
 
 end 
