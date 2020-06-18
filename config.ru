@@ -8,4 +8,5 @@ end
 
 use Rack::MethodOverride #Sinatra Middleware - allows for use of patch and delete methods, and must be placed above all other controllers
 use UsersController
+use GamesController
 run ApplicationController

@@ -1,0 +1,13 @@
+<% if logged_in? %>
+
+    <a href="/games/new" role="button">Add a new game"</a>
+    <% end %>
+
+    <hr>
+
+    <% @games.reverse.each do |game| %>
+            Title: <a href="/games/<%= game.id %>"><b><%=game.title %> </a>
+            Developer:&ensp;<b><%=game.developer%></b>&ensp;
+            <hr>
+    <% end %> 
+            
