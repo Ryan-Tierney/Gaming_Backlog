@@ -4,9 +4,10 @@
   <title>Video Game Backlog</title>
 </head>
   <body>
+  <center>
     <nav>>
         <% if logged_in? %>
-            <a href="/games/new" role="button">Add A Game</a>&emsp;&emsp;
+            <a href="/games/new" role="button" > Add A Game</a>&emsp;&emsp;
             <a href="/logout" role="button" >Log Out</a>
         <% else %>   
             <h1><b>Welcome to the Video Games Library!</b></h1>
@@ -16,5 +17,6 @@
         <%end %>
     </nav> 
     <br />
+  </center>
   </body>
 </html>

@@ -4,7 +4,7 @@ class GamesController < ApplicationController
         if logged_in? 
             @user = current_user 
             session[:user_id] = @user.id 
-            @games = Game.all
+            @games = current_user.games
             erb :'games/games' 
         else 
             redirect to '/login'
@@ -42,7 +42,7 @@ class GamesController < ApplicationController
 
     get '/games/:id/edit' do 
         @game = Game.find_by_id(params[:id])
-        if @game && @game.user == current_user 
+        if @game.user_id == session[:user_id] 
             erb :'/games/edit' 
         else 
             flash[:error] = "#{game.title} is not part of you're backlog"

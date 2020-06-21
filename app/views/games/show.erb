@@ -1,22 +1,13 @@
 
+<center>
+<h2> Title: <%= @game.title %> <br> Developer: <%= @game.developer %> <h2> 
+</center>
 
-<div class="container">        
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Developer</th>
-    </tr>
-  </thead>
-<tbody>
-<tr>
-    <td><%= @game.title %></td>&emsp;
-    <td><%= @game.developer %></td>
-</tr>
-
-
+<center>
 <% if logged_in? %> 
-    <a href="/games/<%= @game.id %>/edit" button type="button" role="button">Edit Or Delete Your game</a>&emsp;
-    <a href="/games/new" role="button" >Add Another Game</a>&emsp;
+    <a href="/games/<%= @game.id %>/edit" button type="button" role="button">Edit Or Delete Your game</a>&emsp;<br>
+    <a href="/games/new" role="button" >Add Another Game</a>&emsp;<br>
     <a href="/games" button type="button" role="button">Go To The Library</a>
 <% end %>
+<br> 
+</center>

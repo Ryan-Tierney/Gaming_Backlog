@@ -17,12 +17,12 @@
     </div>
   </nav>
     <div>
+    <center>
       <h1>Video Game Backlog</h1><br />
         <% if logged_in? %>
         <h2>Welcome, <%=current_user.username %>!</h2>
       <% end %>
     </div>
-    <center>
       <div>
         <% if flash[:error] != "" %>
           <p> <%= flash[:error] %> </p>
