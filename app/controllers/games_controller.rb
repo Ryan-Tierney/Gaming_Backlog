@@ -64,7 +64,7 @@ class GamesController < ApplicationController
         end
       end
 
-    delete '/games/:id/delete' do 
+    post '/games/:id/delete' do 
         @game = Game.find_by_id(params[:id])
         if @game && @game.user == current_user
             @game.delete

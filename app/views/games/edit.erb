@@ -1,13 +1,14 @@
 <center>
 <h3>Edit or delete your game</h3> 
 
-<form method="POST" action="/games"> 
+<form method="POST" action="/games/<%= @game.id %>"> 
 <input ='hidden' type='hidden' name='_method' value='patch'>
 <label for="title"> New Title:</label>
 <input type="text" placeholder="<%= @game.title %>" name="title">
 <label for="developer"> New Developer:</label>
 <input type="text" placeholder="<%= @game.developer %>" name="developer">
 <button type="submit" id='submit'>Submit</button> 
+</form>
 
 <hr>
 

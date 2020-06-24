@@ -14,17 +14,19 @@ class UsersController < ApplicationController
     end
   
     post '/register' do 
-      if 
-        params[:username] == "" || params[:password] == ""
-        flash[:error] = "You must fill out all fields to sign up."
-        redirect to '/register'
-      else
-        user = User.new(:username => params[:username], :password => params[:password])
-        user.save 
-        session[:user_id] = user.id
-        redirect to '/'
-      end
-    end
+      @user = User.create(username: params[:username], password: params[:password]) 
+      @user.save
+       if @user.valid?
+         session[:user_id] = @user.id 
+         redirect "/games"
+       elsif @user.invalid? && User.find_by(username: @user.username)
+         flash[:error] = "That username is already taken, please choose another."
+         redirect to '/register'
+       else
+         flash[:error] = "You must fill out all fields to sign up."
+         redirect to '/register'
+       end
+     end
   
     get '/login' do 
       if !logged_in?
