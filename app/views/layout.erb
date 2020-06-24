@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <title>Video Game Backlog</title>
+  <link rel="stylesheet" href="/stylesheets/main.css" /> 
 </head>
  <body>
   <nav>
-    <div>
+    <div class="taskbar">
           <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/register">Register</a></li>
@@ -16,12 +17,19 @@
         </ul>
     </div>
   </nav>
-    <div>
     <center>
+    <div class="layout"> 
       <h1>Video Game Backlog</h1><br />
         <% if logged_in? %>
         <h2>Welcome, <%=current_user.username %>!</h2>
       <% end %>
+    </div>
+
+    <div class="left-img"> 
+      <a href="/games/new"><img src="/images/ghostimage.jpg">Add Ghost of Tsushima to your backlog</a> 
+    </div> 
+    <div class="right-img"> 
+    <a href="/games/new"><img src="/images/tlouimage.jpg">Add The Last of Us Part 2 to your backlog</a> 
     </div>
       <div>
         <% if flash[:error] != "" %>
@@ -36,4 +44,5 @@
     </center>
   <%= yield %>
  </body>
+
 </html>
