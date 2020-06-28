@@ -20,7 +20,7 @@ class GamesController < ApplicationController
     end 
 
     post '/games' do 
-        if params[:title] == "" || params[:platform] == "" 
+        if params[:title] == "" || params[:developer] == "" 
             flash[:error] = "Oops, you need to fill out all the fields."
             redirect to "games/new"
         else 
@@ -42,12 +42,7 @@ class GamesController < ApplicationController
 
     get '/games/:id/edit' do 
         @game = Game.find_by_id(params[:id])
-        if @game.user_id == session[:user_id] 
             erb :'/games/edit' 
-        else 
-            flash[:error] = "#{game.title} is not part of you're backlog"
-            redirect to '/games'
-        end 
     end 
 
     patch '/games/:id' do 
@@ -66,13 +61,9 @@ class GamesController < ApplicationController
 
     post '/games/:id/delete' do 
         @game = Game.find_by_id(params[:id])
-        if @game && @game.user == current_user
-            @game.delete
-            flash[:success] = "#{@game.title} was deleted successfully"
-            redirect to '/games'
-        else
-            flash[:error] = "This game does not belong to you"
-        end 
+        @game.delete
+        flash[:success] = "#{@game.title} was deleted successfully"
+        redirect to '/games' 
     end 
 
 end 
